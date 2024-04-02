@@ -1,5 +1,5 @@
 //
-//  Dig.swift
+//  dig.swift
 //  SysdiagnoseUtil
 //
 //  Created by Maggie Zirnhelt on 3/16/24.
@@ -7,25 +7,37 @@
 
 import Foundation
 
-struct Dig {
-    var command: String
-    var question: Question
-    var answer: Answer
-    var stats: Stats
+/// `sysdiagnose_xxxx.xx.xx/network-info/dig-info.txt`
+class dig: Describable {
+    var command: String = ""
+    var question: Question = .init()
+    var answer: Answer = .init()
+    var stats: Stats = .init()
 
-    struct Question {
+    override var description: String { "not sure yet" }
 
+    class Question: Describable {
+        override var description: String { "not sure yet" }
     }
 
     /// https://www.zytrax.com/books/dns/ch15/#answer
-    struct Answer {
-        struct Header {
-            var opCode: OpCode
-            var status: UInt32
-            var id: UInt32
-            var flags: Flags
+    class Answer: Describable {
 
-            enum OpCode: UInt8 {
+        override var description: String { "not sure yet" }
+
+        class Header: Describable {
+
+            override var description: String { "not sure yet" }
+
+            var opCode: OpCode = .QUERY
+            var status: UInt32 = 0
+            var id: UInt32 = 0
+            var flags: [Flags] = [.QR, .AA]
+
+            enum OpCode: UInt8, DescribableProtocol {
+                
+                var description: String { "not sure yet" }
+
                 case QUERY = 0
                 case IQUERY = 1
                 case STATUS = 2
@@ -46,7 +58,10 @@ struct Dig {
                 }
             }
 
-            enum Flags {
+            enum Flags: DescribableProtocol {
+
+                var description: String { "not sure yet" }
+
                 case QR
                 case AA
                 case TC
@@ -70,8 +85,8 @@ struct Dig {
                         description = "That attribute doesn't have a defined description in the context of Dig."
                     }
                     return description
-                    }
                 }
+            }
 
             static func describe(_ attr: String) -> String {
                 var description: String
@@ -92,35 +107,18 @@ struct Dig {
                 return description
             }
         }
-
-        static func describe(_ attr: String) -> String {
-            var description: String
-            let components = attr.components(separatedBy: ".")
-            switch components.first?.lowercased() {
-            case "header":
-                return Header.describe(components.dropFirst().joined(separator: "."))
-            default:
-                description = "That attribute doesn't have a defined description in the context of Dig."
-            }
-            return description
-        }
     }
 
     struct Stats {
 
     }
 
-    func describe(_ attr: String) -> String {
+    static func describe(_ attr: String) -> String {
         var description: String
+        
         let components = attr.components(separatedBy: ".")
         switch components.first?.lowercased() {
         case "command":
-            description = ""
-        case "question":
-            description = ""
-        case "answer":
-            return Answer.describe(components.dropFirst().joined(separator: "."))
-        case "stats":
             description = ""
         default:
             description = "That attribute doesn't have a defined description in the context of Dig."

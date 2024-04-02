@@ -19,7 +19,10 @@
 		A15626652B98229F008C8B67 /* SysdiagnoseUtilUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15626642B98229F008C8B67 /* SysdiagnoseUtilUITests.swift */; };
 		A15626672B98229F008C8B67 /* SysdiagnoseUtilUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15626662B98229F008C8B67 /* SysdiagnoseUtilUITestsLaunchTests.swift */; };
 		A15626742B98241C008C8B67 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15626732B98241C008C8B67 /* SearchManager.swift */; };
-		A1E616CD2BA615840008DC3C /* Dig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E616CC2BA615840008DC3C /* Dig.swift */; };
+		A1A2BB0C2BBA3670001B22C0 /* ifcofig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2BB0B2BBA3670001B22C0 /* ifcofig.swift */; };
+		A1A2BB0F2BBA3781001B22C0 /* Describable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2BB0E2BBA3781001B22C0 /* Describable.swift */; };
+		A1A2BB112BBA4862001B22C0 /* NodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A2BB102BBA4862001B22C0 /* NodeView.swift */; };
+		A1E616CD2BA615840008DC3C /* dig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E616CC2BA615840008DC3C /* dig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +59,10 @@
 		A15626642B98229F008C8B67 /* SysdiagnoseUtilUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysdiagnoseUtilUITests.swift; sourceTree = "<group>"; };
 		A15626662B98229F008C8B67 /* SysdiagnoseUtilUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysdiagnoseUtilUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A15626732B98241C008C8B67 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
-		A1E616CC2BA615840008DC3C /* Dig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dig.swift; sourceTree = "<group>"; };
+		A1A2BB0B2BBA3670001B22C0 /* ifcofig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ifcofig.swift; sourceTree = "<group>"; };
+		A1A2BB0E2BBA3781001B22C0 /* Describable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Describable.swift; sourceTree = "<group>"; };
+		A1A2BB102BBA4862001B22C0 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
+		A1E616CC2BA615840008DC3C /* dig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 		A154193F2B982C4300F5B7CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A1A2BB0D2BBA3774001B22C0 /* Abstract */,
 				A1E616CB2BA6155F0008DC3C /* Network */,
 				A15419402B982C6900F5B7CA /* Theme.swift */,
 			);
@@ -100,6 +107,7 @@
 				A15419422B982D0200F5B7CA /* FileView.swift */,
 				A154193D2B982B6F00F5B7CA /* SearchView.swift */,
 				A15419472B98521B00F5B7CA /* SearchResultView.swift */,
+				A1A2BB102BBA4862001B22C0 /* NodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,10 +187,19 @@
 			path = SysdiagnoseUtilUITests;
 			sourceTree = "<group>";
 		};
+		A1A2BB0D2BBA3774001B22C0 /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				A1A2BB0E2BBA3781001B22C0 /* Describable.swift */,
+			);
+			path = Abstract;
+			sourceTree = "<group>";
+		};
 		A1E616CB2BA6155F0008DC3C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A1E616CC2BA615840008DC3C /* Dig.swift */,
+				A1E616CC2BA615840008DC3C /* dig.swift */,
+				A1A2BB0B2BBA3670001B22C0 /* ifcofig.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -317,12 +334,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1A2BB0F2BBA3781001B22C0 /* Describable.swift in Sources */,
+				A1A2BB0C2BBA3670001B22C0 /* ifcofig.swift in Sources */,
 				A15419432B982D0200F5B7CA /* FileView.swift in Sources */,
 				A15419482B98521B00F5B7CA /* SearchResultView.swift in Sources */,
 				A154193E2B982B6F00F5B7CA /* SearchView.swift in Sources */,
 				A15626742B98241C008C8B67 /* SearchManager.swift in Sources */,
-				A1E616CD2BA615840008DC3C /* Dig.swift in Sources */,
+				A1E616CD2BA615840008DC3C /* dig.swift in Sources */,
 				A156264B2B98229C008C8B67 /* WelcomeView.swift in Sources */,
+				A1A2BB112BBA4862001B22C0 /* NodeView.swift in Sources */,
 				A15419412B982C6900F5B7CA /* Theme.swift in Sources */,
 				A15626492B98229C008C8B67 /* SysdiagnoseUtilApp.swift in Sources */,
 			);
@@ -414,7 +434,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -471,7 +491,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;

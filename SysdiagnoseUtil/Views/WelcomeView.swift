@@ -39,13 +39,12 @@ struct WelcomeView: View {
                 Button("Browse fs") {
                     showFileImporter = true
                 }
-                if downloadsBookmark != nil,
-                   let downloadsURL = downloadsUrl(downloadsBookmark),
-                   downloadsURL.startAccessingSecurityScopedResource() {
+                let downloadsURL = downloadsUrl(downloadsBookmark)
+                let showSearchView: Bool = downloadsBookmark != nil
+                                           && downloadsURL != nil
+                                           && downloadsURL?.startAccessingSecurityScopedResource() ?? false
+                if showSearchView, let downloadsURL {
                     Text(downloadsURL.absoluteString)
-                    NavigationLink(destination: SearchView(dir: downloadsURL)) {
-                        Text("Search within this dir")
-                    }
                 }
                 Canvas { context, size in
                     let formattedText = Text("Drag and drop here if you'd like")
@@ -55,6 +54,14 @@ struct WelcomeView: View {
                     // TODO: check that it is a sysdiagnose dir before accepting it
                     dir = items.first ?? URL(fileURLWithPath: "/tmp/")
                     return true
+                }
+                if showSearchView, let downloadsURL {
+                    NavigationLink(destination: SearchView(dir: downloadsURL)) {
+                        Text("Search within this dir")
+                    }
+                    NavigationLink(destination: NodeView()) {
+                        Text("Open node view")
+                    }
                 }
             }
             .fileImporter(isPresented: $showFileImporter, allowedContentTypes: [UTType.folder]) { result in
