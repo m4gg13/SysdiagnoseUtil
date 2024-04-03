@@ -9,28 +9,34 @@ import SwiftUI
 
 struct NodeView: View {
     var body: some View {
+        GeometryReader { geometry in
 
-        let width = 10.0
-        let height = 10.0
+            let spacing = 50.0
 
-        Path { path in
-            path.move(
-                to: CGPoint(
-                    x: 100,
-                    y: 100
-                )
-            )
+            Path { path in
 
-            Header1Node.segments.forEach { segment in
-                path.addLine(
-                    to: CGPoint(
-                        x: width * segment.line.x + 100,
-                        y: height * segment.line.y + 100
-                    )
-                )
+                let width = min(geometry.size.width, geometry.size.height)
+
+                let height = width * 0.75
+
+                let middle = width * 0.5
+                let topWidth = width * 0.5
+
+                let topHeight = height * 0.488
+
+                path.move(to: CGPoint(x: middle, y: topHeight / 2 + spacing * 3))
+
+                path.addLines([
+                    CGPoint(x: spacing, y: spacing),
+                    CGPoint(x: width + spacing, y: spacing),
+                    CGPoint(x: width + spacing, y: height + spacing),
+                    CGPoint(x: spacing, y: height + spacing),
+                ])
             }
+            .fill(.white)
+
+            Text("a thing").colorInvert().position(x: spacing + 70.0, y: spacing + 20.0)
         }
-        .fill(.black)
     }
 }
 
@@ -42,8 +48,6 @@ struct Header1Node {
     }
 
     static let adjustment: CGFloat = 0.085
-
-
 
     static let segments = [
 
@@ -67,35 +71,35 @@ struct Header1Node {
 
         ),
 
-        Segment(
-
-            line:    CGPoint(x: 0.00, y: 0.70 - adjustment),
-
-            curve:   CGPoint(x: 0.05, y: 0.80 - adjustment),
-
-            control: CGPoint(x: 0.00, y: 0.75 - adjustment)
-
-        ),
-
-        Segment(
-
-            line:    CGPoint(x: 0.40, y: 0.95),
-
-            curve:   CGPoint(x: 0.60, y: 0.95),
-
-            control: CGPoint(x: 0.50, y: 1.00)
-
-        ),
+        //            Segment(
+        //
+        //                line:    CGPoint(x: 0.00, y: 0.70 - adjustment),
+        //
+        //                curve:   CGPoint(x: 0.05, y: 0.80 - adjustment),
+        //
+        //                control: CGPoint(x: 0.00, y: 0.75 - adjustment)
+        //
+        //            ),
 
         Segment(
 
-            line:    CGPoint(x: 0.95, y: 0.80 - adjustment),
+            line:    CGPoint(x: 0.40, y: 0.55),
 
-            curve:   CGPoint(x: 1.00, y: 0.70 - adjustment),
+            curve:   CGPoint(x: 0.60, y: 0.55),
 
-            control: CGPoint(x: 1.00, y: 0.75 - adjustment)
+            control: CGPoint(x: 0.50, y: 0.60)
 
         ),
+
+        //            Segment(
+        //
+        //                line:    CGPoint(x: 0.95, y: 0.80 - adjustment),
+        //
+        //                curve:   CGPoint(x: 1.00, y: 0.70 - adjustment),
+        //
+        //                control: CGPoint(x: 1.00, y: 0.75 - adjustment)
+        //
+        //            ),
 
         Segment(
 
@@ -108,4 +112,10 @@ struct Header1Node {
         )
 
     ]
+}
+
+#Preview {
+
+    NodeView()
+
 }
