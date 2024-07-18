@@ -1,0 +1,7 @@
+# 17 july 2024
+i've been thinking.
+
+what is this thing?
+compares two sysdiagnose folders and offers contextual information about the differences.
+
+been thinking that this thing might better, in its initial form, be a script. so i started in on a script to do the comparing of two sysdiagnose folders. it's not done yet and it doesnt fulfill the contextual information portion of the purpose. but it is a start and its way easier to learn from
